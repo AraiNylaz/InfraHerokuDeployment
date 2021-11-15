@@ -8,7 +8,7 @@ class Db
     {
         try {
             $db = parse_url(getenv("DATABASE_URL"));
-            $this->_db = new PDO("pgsql:" . sprintf("host=%s;port=%s;user=%s;password=%s;dbname=%s",
+            $this->_db = new PDO("postgre://" . sprintf("user=%s:password=%s@host=%s:port=%s/dbname=%s",
             $db["host"], $db["port"], $db["user"], $db["pass"], ltrim($db["path"], "/")));
             $this->_db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         } 
